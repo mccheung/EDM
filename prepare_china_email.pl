@@ -29,7 +29,7 @@ foreach my $db ( @dbs ) {
 }
 
 
-my $sql = qq/select email from $old_table_name where email like ?  limit 100/;
+my $sql = qq/select email from $old_table_name where email like ? /;
 
 #my $where = join( ' OR ', map{ "email like '%$_'" } @china_email_list );
 
