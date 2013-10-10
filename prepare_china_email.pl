@@ -3,7 +3,8 @@ use strict;
 use warnings;
 use Data::Dumper;
 
-use Smart::Comments;
+# use Smart::Comments;
+use Email::Valid;
 use GetPassword;
 use DBI;
 
@@ -11,6 +12,7 @@ $|++;
 my ( $user, $pass ) = GetPassword->get_password();
 my $old_table_name = GetPassword->get_old_table_name();
 my @dbs = GetPassword->get_dbs();
+
 my @dbhs;
 my @china_email_list = qw/126.com 163.com yeah.net sina.com.cn/;
 
@@ -27,7 +29,7 @@ foreach my $db ( @dbs ) {
 }
 
 
-my $sql = qq/select email, first_name, last_name from $old_table_name where email like ?  limit 100/;
+my $sql = qq/select email from $old_table_name where email like ?  limit 100/;
 
 #my $where = join( ' OR ', map{ "email like '%$_'" } @china_email_list );
 
@@ -38,9 +40,9 @@ foreach my $dbh ( @dbhs ) {
     print "Begin select email suffix: $email_suffix rows...\n";
     my $rows = $dbh->selectall_arrayref( $sql, undef, ( '%' . $email_suffix ) );
     print "Done!\n";
-    
+
     print "Start save data...\n";
-    save_email( undef, $rows, $email_suffix );
+    save_email( $dbh_object, $rows, $email_suffix );
     print "Done!\n";
     ### geted rows
   }
@@ -53,9 +55,12 @@ sub save_email {
   my $table_name = get_table_name( $email_suffix );
 
   foreach my $row ( @$rows ) {
+    # test email is valid
+    next unless Email::Valid->address( $row->[0] );
+
     unless ( check_email_exists( $dbh, $row->[0], $table_name ) ) {
       my $sql = qq/insert into $table_name ( email, name ) values ( ?, ? )/;
-      my $first_name = make_first_name( $row->[1] );
+      my $first_name = make_first_name( $row->[0] );
       $dbh->do( $sql, undef, ( $row->[0], $first_name ));
       print "Save email: $row->[0] done!\n";
     }
