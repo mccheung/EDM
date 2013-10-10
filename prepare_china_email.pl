@@ -77,7 +77,7 @@ sub check_email_exists {
   my ( $dbh, $email, $table_name ) = @_;
 
   my $sql = qq/select count(1) from $table_name where email = ? /;
-  my ( $is_exists ) = $dbh->getrow_array( $sql, undef, $email );
+  my ( $is_exists ) = $dbh->selectrow_array( $sql, undef, $email );
 
   return defined $is_exists && $is_exists > 0 ? 1:0;
 }
