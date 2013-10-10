@@ -14,7 +14,7 @@ my @dbs = GetPassword->get_dbs();
 my @dbhs;
 my @china_email_list = qw/126.com 163.com yeah.net sina.com.cn/;
 
-my $dbh_object = DBI->connect( "dbi:msyql:EDM", $user, $pass ) || die "Can't connect to EDM database\n";
+my $dbh_object = DBI->connect( "dbi:mysql:EDM", $user, $pass ) || die "Can't connect to EDM database\n";
 
 
 foreach my $db ( @dbs ) {
