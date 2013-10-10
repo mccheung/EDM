@@ -9,8 +9,8 @@ use DBI;
 
 $|++;
 my ( $user, $pass ) = GetPassword->get_password();
-
-my @dbs = qw/data5/;
+my $old_table_name = GetPassword->get_old_table_name();
+my @dbs = GetPassword->get_dbs();
 my @dbhs;
 my @china_email_list = qw/126.com 163.com yeah.net sina.com.cn/;
 
@@ -23,7 +23,7 @@ foreach my $db ( @dbs ) {
 }
 
 
-my $sql = qq/select email, first_name, last_name from user_addressbook where email like ? limit 10/;
+my $sql = qq/select email, first_name, last_name from $old_table_name where email like ? /;
 
 #my $where = join( ' OR ', map{ "email like '%$_'" } @china_email_list );
 
@@ -33,6 +33,7 @@ foreach my $dbh ( @dbhs ) {
   foreach my $email_suffix ( @china_email_list ) {
     my $rows = $dbh->selectall_arrayref( $sql, undef, ( '%' . $email_suffix ) );
     save_email( undef, $rows, $email_suffix );
+    ### geted rows
   }
 }
 
@@ -46,7 +47,6 @@ sub save_email {
     unless ( check_email_exists( $dbh, $row->[0], $table_name ) ) {
       my $sql = qq/insert into $table_name ( email, name ) values ( ?, ? )/;
       my $first_name = make_first_name( $row->[1] );
-
       $dbh->do( $sql, undef, ( $row->[0], $first_name ));
     }
     ### $row
