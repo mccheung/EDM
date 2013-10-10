@@ -18,7 +18,7 @@ my @china_email_list = qw/126.com 163.com yeah.net sina.com.cn/;
 my $dbh_object = DBI->connect( "dbi:mysql:EDM", $user, $pass ) || die "Can't connect to EDM database\n";
 
 foreach ( @china_email_list ) {
-  check_and_create_table( $dbh_object, $_ );
+  check_and_create_table( $dbh_object, get_table_name( $_) );
 };
 
 foreach my $db ( @dbs ) {
@@ -27,7 +27,7 @@ foreach my $db ( @dbs ) {
 }
 
 
-my $sql = qq/select email, first_name, last_name from $old_table_name where email like ? /;
+my $sql = qq/select email, first_name, last_name from $old_table_name where email like ?  limit 100/;
 
 #my $where = join( ' OR ', map{ "email like '%$_'" } @china_email_list );
 
@@ -35,8 +35,13 @@ my $sql = qq/select email, first_name, last_name from $old_table_name where emai
 foreach my $dbh ( @dbhs ) {
 
   foreach my $email_suffix ( @china_email_list ) {
+    print "Begin select email suffix: $email_suffix rows...\n";
     my $rows = $dbh->selectall_arrayref( $sql, undef, ( '%' . $email_suffix ) );
+    print "Done!\n";
+    
+    print "Start save data...\n";
     save_email( undef, $rows, $email_suffix );
+    print "Done!\n";
     ### geted rows
   }
 }
@@ -52,6 +57,7 @@ sub save_email {
       my $sql = qq/insert into $table_name ( email, name ) values ( ?, ? )/;
       my $first_name = make_first_name( $row->[1] );
       $dbh->do( $sql, undef, ( $row->[0], $first_name ));
+      print "Save email: $row->[0] done!\n";
     }
     ### $row
   }
