@@ -13,4 +13,6 @@ MANIFEST.bak
 META.yml
 MYMETA.yml
 nytprof.out
-pm_to_blib
+m_to_blib
+GetPassword.pm
+test.pl
