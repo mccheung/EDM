@@ -16,3 +16,5 @@ nytprof.out
 m_to_blib
 GetPassword.pm
 test.pl
+edm.yaml
+example/*
