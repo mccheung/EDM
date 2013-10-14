@@ -1,0 +1,106 @@
+% layout 'default';
+% title 'Welcome';
+
+<div class="wrapper">
+     <!-- BEGIN: page title -->
+     <div class="page_title">
+       <h2>Portfolio</h2>
+       <p>Lorem ipsum dolor sit amet</p>
+     </div>
+     <!--END: page title -->
+
+     <!-- BEGIN: portfolio filter -->
+     <div id="portfolio">
+
+       <div id="portfolio-filter">
+       <ul>
+          <li><a class="current" href="#all">All</a></li>
+          <li><a class="" href="#Web">Web Design </a></li>
+          <li><a class="" href="#Logo">Logo &amp; Branding </a></li>
+          <li><a class="" href="#Print">Print</a></li>
+          <li><a class="last" href="#Video">Video</a></li>
+      </ul><!--END ul-->
+    </div><!--END ul gallery-filter-->
+    <div class="clear"></div>
+
+    <!-- BEGIN: Portfolio -->
+      <div id="portfolio_box">
+       <ul>
+          <li class="Web">
+          <a href="example/large_image.jpg" class="iframe" data-id="fancybox-portfolio"><img src="example/portfolio1.png" alt="#" style="opacity: 1; "></a>
+          <div class="project_info">
+            <h2>Text goes here 1</h2>
+            <h3>Web Design</h3>
+            <a href="#" class="info_button" data-reveal-id="myModal"></a>
+          </div>
+         </li>
+         <li class="Logo">
+         <a href="example/large_image.jpg" class="iframe" data-id="fancybox-portfolio"><img src="example/portfolio2.png" alt="#" style="opacity: 1; "></a>
+         <div class="project_info">
+           <h2>Text goes here 2</h2>
+           <h3>Logo &amp; Branding</h3>
+           <a href="#" class="info_button" data-reveal-id="myModal"></a>
+         </div>
+         </li>
+         <li class="Web">
+          <a href="example/large_image.jpg" class="iframe" data-id="fancybox-portfolio"><img src="example/portfolio3.png" alt="#" style="opacity: 1; "></a>
+          <div class="project_info">
+            <h2>Text goes here 3</h2>
+            <h3>Web Design</h3>
+            <a href="#" class="info_button" data-reveal-id="myModal"></a>
+          </div>
+         </li>
+         <li class="Logo">
+         <a href="example/large_image.jpg" class="iframe" data-id="fancybox-portfolio"><img src="example/portfolio4.png" alt="#" style="opacity: 1; "></a>
+         <div class="project_info">
+           <h2>Text goes here 4</h2>
+           <h3>Logo &amp; Branding</h3>
+           <a href="#" class="info_button" data-reveal-id="myModal"></a>
+         </div>
+         </li>
+         <li class="Print">
+          <a href="example/large_image.jpg" class="iframe" data-id="fancybox-portfolio"><img src="example/portfolio5.png" alt="#"></a>
+          <div class="project_info">
+            <h2>Text goes here 5</h2>
+            <h3>Print</h3>
+            <a href="#" class="info_button" data-reveal-id="myModal"></a>
+          </div>
+         </li>
+         <li class="Video">
+         <a href="http://sc.chinaz.com/" class="iframe" data-id="fancybox-portfolio"><img src="example/portfolio6.png" alt="#" style="opacity: 1; "></a>
+         <div class="project_info">
+           <h2>Text goes here 6</h2>
+           <h3>Video</h3>
+           <a href="#" class="info_button" data-reveal-id="myModal"></a>
+         </div>
+         </li>
+         <li class="Video">
+          <a href="http://sc.chinaz.com" class="iframe" data-id="fancybox-portfolio"><img src="example/portfolio7.png" alt="#" style="opacity: 1; "></a>
+          <div class="project_info">
+            <h2>Text goes here 7</h2>
+            <h3>Video</h3>
+            <a href="#" class="info_button" data-reveal-id="myModal"></a>
+          </div>
+         </li>
+         <li class="Video">
+         <a href="http://sc.chinaz.com" class="iframe" data-id="fancybox-portfolio"><img src="example/portfolio8.png" alt="#"></a>
+         <div class="project_info">
+           <h2>Text goes here 8</h2>
+           <h3>Video</h3>
+           <a href="#" class="info_button" data-reveal-id="myModal"></a>
+         </div>
+         </li>
+         </ul><!--END ul-->
+       </div><!--END portfolio_box-->
+       <br class="clear">
+       <div class="pager">
+       <ul>
+          <li><a href="#">«</a></li>
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">»</a></li>
+       </ul>
+     </div>
+   </div>
+ </div>
