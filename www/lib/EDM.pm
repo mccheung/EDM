@@ -13,6 +13,8 @@ sub startup {
 
   # Normal route to controller
   $r->get('/')->to('root#index');
+  $r->get('/oauth2')->to('oauth2#index');
+  $r->post('/oauth2')->to('oauth2#oauth2');
 }
 
 1;
