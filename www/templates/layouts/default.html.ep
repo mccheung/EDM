@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title><%= title + 'Boutique( 精品屋 )' %></title>
+<title><%= title + 'Boutique( 美品汇 )' %></title>
    <link href="css/style.css" rel="stylesheet" type="text/css" />
    <link href="css/jquery.fancybox-1.3.4.css" rel="stylesheet" type="text/css" />
    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css' />
